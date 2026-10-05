@@ -3,7 +3,7 @@ NAME = span
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -fsanitize=address
 
-SRC = main.cpp
+SRC = main.cpp Span.cpp
 OBJDIR = obj
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.cpp=.o))
 
@@ -14,7 +14,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-$(OBJDIR)/%.o: %.cpp span.hpp span.cpp main.cpp | $(OBJDIR)
+$(OBJDIR)/%.o: %.cpp Span.hpp | $(OBJDIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(OBJDIR):

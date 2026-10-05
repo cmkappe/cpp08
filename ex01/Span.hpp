@@ -18,13 +18,21 @@ class Span {
         std::vector<int>    v;
 
     public:
+        // '= delete' it's not possible to have an empty construcor
         Span() = delete;
         Span(const unsigned int &N);
         ~Span();
+        // '= default' uses cpp default implementation
         // Span(const Span &other) = default;
         // Span operator=(const Span &other) = delete;
 
-    // void addNumber(int num);
-    // shortestSpan
-    // longestSpan
+        void addNumber(int number);
+    
+        template <typename Iterator>
+        void addRange(Iterator begin, Iterator end);
+
+        long long shortestSpan() const;
+        // unsigned int longestSpan() const;
+
+        void print() const;
 };
