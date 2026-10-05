@@ -10,7 +10,6 @@
 #include <iterator>
 #include <ostream>
 
-#include <vector>
 
 class Span {
     private:
@@ -19,20 +18,24 @@ class Span {
 
     public:
         // '= delete' it's not possible to have an empty construcor
+        // '= default' uses cpp default implementation
         Span() = delete;
         Span(const unsigned int &N);
         ~Span();
-        // '= default' uses cpp default implementation
-        // Span(const Span &other) = default;
-        // Span operator=(const Span &other) = delete;
+        Span(const Span &other) = default;
+        Span operator=(const Span &other) = delete;
 
         void addNumber(int number);
-    
-        template <typename Iterator>
-        void        addRange(Iterator begin, Iterator end);
 
         long long   shortestSpan() const;
         long long   longestSpan() const;
 
-        //void print() const;
+        template <typename It>
+        void addRange(It first, It last)
+        {
+            if (std::distance(first, last) > _N - v.size())
+                throw std::runtime_error("Not enough capacity to add range");
+
+            v.insert(v.end(), first, last);
+        }
 };

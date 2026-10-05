@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 20:45:31 by ckappe            #+#    #+#             */
-/*   Updated: 2026/10/05 16:22:29 by ckappe           ###   ########.fr       */
+/*   Updated: 2026/10/05 16:38:05 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ long long Span::longestSpan() const {
     return (static_cast<long long>(*minmax.second)
          - static_cast<long long>(*minmax.first));
 }
-
 
 
 
