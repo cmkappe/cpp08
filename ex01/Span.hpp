@@ -33,7 +33,8 @@ class Span {
         template <typename It>
         void addRange(It first, It last)
         {
-            if (std::distance(first, last) > _N - v.size())
+            if (std::distance(first, last) > 
+            static_cast<long long>(_N - v.size()))
                 throw std::runtime_error("Not enough capacity to add range");
 
             v.insert(v.end(), first, last);

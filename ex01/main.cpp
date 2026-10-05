@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 20:42:39 by ckappe            #+#    #+#             */
-/*   Updated: 2026/10/05 17:00:51 by ckappe           ###   ########.fr       */
+/*   Updated: 2026/10/05 17:33:21 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,19 @@ int main()
     {
         std::cerr << "error: " << e.what() << std::endl;
     }
+
+    std::cout << YELLOW << BOLD << "\nTesting original & copy" << RESET << std::endl;
+    Span original(5);
+    original.addNumber(10);
+    original.addNumber(20);
+
+    Span copy(original);
+
+    std::cout << "Original: "
+            << original.longestSpan() << std::endl;
+
+    std::cout << "Copy: "
+            << copy.longestSpan() << std::endl;
 
     std::cout << YELLOW << BOLD << "\nTest with duplicates" << RESET << std::endl;
     Span duplicates(5);
@@ -117,5 +130,67 @@ int main()
         std::cerr << "full: " << e.what() << std::endl;
     }
 
+    std::cout << YELLOW << BOLD << "\nTest addRange()" << RESET << std::endl;
+    std::vector<int> numbers;
+
+    numbers.push_back(1);
+    numbers.push_back(5);
+    numbers.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(50);
+
+    Span rangeSpan(5);
+
+    rangeSpan.addRange(numbers.begin(), numbers.end());
+
+    std::cout << "Range shortest: "
+            << rangeSpan.shortestSpan() << std::endl;
+
+    std::cout << "Range longest: "
+            << rangeSpan.longestSpan() << std::endl;
+
+    // Span capacity = 3
+    // range size    = 4
+    
+    std::cout << YELLOW << BOLD << "\nTest addRange() capacity protection" << RESET << std::endl;
+    try
+    {
+        std::vector<int> numbers;
+
+        numbers.push_back(1);
+        numbers.push_back(2);
+        numbers.push_back(3);
+        numbers.push_back(4);
+
+        Span small(3);
+
+        small.addRange(numbers.begin(), numbers.end());
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "addRange capacity: "
+                << e.what() << std::endl;
+    }
+
+    std::cout << YELLOW << BOLD << "\nTest thousands" << RESET << std::endl;
+
+    std::vector<int> manyNumbers;
+    for (int i = 0; i < 100000; ++i)
+        manyNumbers.push_back(i);
+   
+    Span huge(100000);
+    huge.addRange(manyNumbers.begin(), manyNumbers.end());
+
+    std::cout << "10,0000 numbers:" << std::endl;
+    std::cout << "shortest = "
+            << huge.shortestSpan() << std::endl;
+
+    std::cout << "longest = "
+            << huge.longestSpan() << std::endl;
+
+    // shortest = 1
+    // longest = 99999    
+
+    
     return 0;
 }
