@@ -29,10 +29,10 @@ class Span {
         void addNumber(int number);
     
         template <typename Iterator>
-        void addRange(Iterator begin, Iterator end);
+        void        addRange(Iterator begin, Iterator end);
 
-        long long shortestSpan() const;
-        // unsigned int longestSpan() const;
+        long long   shortestSpan() const;
+        long long   longestSpan() const;
 
-        void print() const;
+        //void print() const;
 };

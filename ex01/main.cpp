@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 20:42:39 by ckappe            #+#    #+#             */
-/*   Updated: 2026/10/05 15:48:36 by ckappe           ###   ########.fr       */
+/*   Updated: 2026/10/05 16:25:43 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ int main()
 
         std::cout << sp.shortestSpan() << std::endl;
         //std::cout << sp.longestSpan() << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "error: " << e.what() << std::endl;
+    }
+
+    try {
+        Span sp2(4);
+        sp2.addNumber(42);
+        sp2.addNumber(42);
+        sp2.addNumber(-42);
+        sp2.addNumber(420);
+
+        std::cout << sp2.longestSpan() << std::endl;
     }
     catch (const std::exception& e)
     {
