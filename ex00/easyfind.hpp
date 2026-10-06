@@ -13,15 +13,16 @@ template <typename T> int easyfind(const T &container, int toFind) {
   return static_cast<int>(std::distance(container.begin(), cursor));
 } */
 
-// template<typename T> typename T::const_iterator easyfind(const T& container, int toFind);
+// iterators let algorithms like find() access that data without knowing the container type
 
+// returns a generic iterator to the element, not “the value’s index”
 template<typename T> typename T::const_iterator easyfind(const T& container, int toFind) {
-    auto cursor = std::find(container.begin(), container.end(), toFind);
+    auto it = std::find(container.begin(), container.end(), toFind);
 
-    if (cursor == container.end())
+    if (it == container.end())
         throw std::runtime_error("Not found");
 
-    return cursor;
+    return it;
 }
 
 // std::vector<int>::iterator it = v.begin();
