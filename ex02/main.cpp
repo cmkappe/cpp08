@@ -6,7 +6,7 @@
 /*   By: ckappe <ckappe@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 17:36:43 by ckappe            #+#    #+#             */
-/*   Updated: 2026/10/06 16:51:21 by ckappe           ###   ########.fr       */
+/*   Updated: 2026/10/06 18:05:51 by ckappe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int main()
         mstack.push(737);
         mstack.push(0);
 
-        MutantStack<int>::stack_iterator it = mstack.begin();
-        MutantStack<int>::stack_iterator ite = mstack.end();
+        MutantStack<int>::iterator it = mstack.begin();
+        MutantStack<int>::iterator ite = mstack.end();
 
         // Test increment and decrement
         ++it;
@@ -92,7 +92,7 @@ int main()
         mstack.push(737);
         mstack.push(0);
 
-        for (MutantStack<int>::stack_iterator it = mstack.begin();
+        for (MutantStack<int>::iterator it = mstack.begin();
              it != mstack.end(); ++it) {
             std::cout << *it << std::endl;
         }
@@ -135,11 +135,11 @@ int main()
         mstack.push(20);
         mstack.push(30);
 
-        MutantStack<int>::stack_iterator it = mstack.begin();
+        MutantStack<int>::iterator it = mstack.begin();
 
         *it = 100;
 
-        for (MutantStack<int>::stack_iterator current = mstack.begin();
+        for (MutantStack<int>::iterator current = mstack.begin();
              current != mstack.end();
              ++current)
         {
