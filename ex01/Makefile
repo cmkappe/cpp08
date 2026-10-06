@@ -1,7 +1,7 @@
 NAME = span
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11
 
 SRC = main.cpp Span.cpp
 OBJDIR = obj
